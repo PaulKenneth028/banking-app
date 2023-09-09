@@ -1,20 +1,24 @@
 import Input from "./InputLogin"
 
+
 const LoginForm = () => {
     return (
+     <section className="form1">
         <form>
             <Input
-                label='username'
+                label='Username'
                 type='text'
             />
 
             <Input
-                label='password'
+                label='Password'
                 type='password'
+                required
             />
 
-            <button type="submit">Sign-in</button>
+            <button id="button1" type="submit">Sign-in</button>
         </form>
+     </section>
     )
 }
 

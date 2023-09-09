@@ -1,11 +1,12 @@
-import React from "react"
+import LoginForm from "./components/login-forms"
+import Header from "./components/Header"
 
 function App() {
     return (
-      <div>
-        <h1>Bankomoto</h1>
+      <div className="container">
+        <Header />
         <main>
-        <Form />
+        <LoginForm />
         </main>
       </div>
         

@@ -1,0 +1,43 @@
+body{
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+  background-color: rgb(235, 119, 119);
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  justify-content: center;
+  align-items: center;
+  font-size: larger;
+}
+.form1 {
+  display: flex;
+  justify-content: center;
+}
+
+#button1 {
+  margin-top: 20px;
+  border: 1px solid black;
+  font-size: large;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+input {
+  font-size: larger;
+}
+
+.container {
+  border: 2px solid black;
+  padding: 50px;
+  border-radius: 50px;
+}
