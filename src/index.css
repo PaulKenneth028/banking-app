@@ -1,38 +1,14 @@
 body{
-  height: 90vh;
+  background-color: pink;
+}
+.navContainer ul {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: larger;
+  justify-content: flex-end;
+  margin-right: 60px;
 }
-
-h1 {
-  display: flex;
-  justify-content: center;
+.navContainer li {
+  padding: 20px
 }
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;
-  justify-content: center;
-  align-items: center;
-  font-size: larger;
-}
-.form1 {
-  display: flex;
-  justify-content: center;
-}
-
-#button1 {
-  margin-top: 20px;
-}
-
-input {
-  font-size: larger;
-}
-
-.container {
-  border: 2px solid black;
-  padding: 50px;
-  border-radius: 50px;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
