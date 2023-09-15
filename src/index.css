@@ -9,6 +9,10 @@ body{
 .navContainer li {
   padding: 20px
 }
+input {
+  display: flex;
+  justify-content: center;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

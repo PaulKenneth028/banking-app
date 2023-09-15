@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Login from "./components/login-forms"
 import Dashboard from "./components/Dashboard"
 import Navbar from "./components/Navbar"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 
 function App() {
@@ -20,21 +21,58 @@ function App() {
 
     const [currentPage, setCurrentPage] = useState ('signin')
     const [user, setUser] = useState (null)
+    const [registration, setRegistrationPage] = useState ('Register')
 
-    return (
+    if (currentPage === 'signin') {
+      return (
       <>
-      <div className="bg-brown-500">
-      <Navbar />
-        <Header />
-        <main>
-          
-          {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
-          {currentPage === 'dashboard' && <Dashboard user={user}/>}
-        </main>
-      </div>
-      <div className="border-line"></div>
-      <footer className="flex justify-center" style={{marginTop: '20px'}}>Copyright 2023</footer></>   
-  )
-}
+      <Login setCurrentPage={setCurrentPage} setUser={setUser}/>
+      </>
+    )
+  }
+
+    if (currentPage === 'dashboard') {
+      return (
+        <>
+      <Dashboard user={user} />
+      </>
+    )
+  }
+
+    if (currentPage === registration) {
+      return (
+        <>
+        <Register setRegistrationPage={setRegistrationPage}/> 
+        </>
+      )
+    }
+  }
+
+
+
+//     return (
+//       <>
+//       <div>
+//       {/* <Navbar /> */}
+//         <Header />
+//         <main>
+//           <BrowserRouter>
+//           <Routes>
+//               <Route path="/Login" element={<Login setCurrentPage={setCurrentPage} setUser={setUser} />} />
+//               <Route path="/Registration" element={<Register />} />
+//           </Routes>
+//           </BrowserRouter>
+//         </main>
+//       </div>
+//       <div className="border-line"></div>
+//       <footer className="flex justify-center" style={{marginTop: '20px'}}>Copyright 2023</footer></>   
+//   )
+// }
+
 
 export default App
+
+
+  {/* {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
+          {currentPage === 'dashboard' && <Dashboard user={user}/>}
+          {currentPage === 'register' && <Register registration={registration}/>} */}
