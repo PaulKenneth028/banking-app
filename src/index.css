@@ -1,6 +1,9 @@
 body{
   background-color: pink;
 }
+.navContainer {
+  border: 1px solid red;
+}
 .navContainer ul {
   display: flex;
   justify-content: flex-end;
@@ -12,6 +15,10 @@ body{
 input {
   display: flex;
   justify-content: center;
+}
+
+.dashNav {
+ border: 1px solid red
 }
 @tailwind base;
 @tailwind components;

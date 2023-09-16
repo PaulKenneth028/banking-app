@@ -7,6 +7,7 @@ const Input = (props) => {
         <>
             <label className="flex justify-center" >{label}</label>
             <input
+            
                 title={label}
                 type={type}
                 id={id}

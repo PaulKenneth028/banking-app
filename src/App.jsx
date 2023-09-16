@@ -13,6 +13,10 @@ function App() {
         {
           Username: 'Kenski28',
           Password: '062813',
+        },
+        {
+          Username: '',
+          Password: '',
         }
       ]
 
@@ -21,32 +25,48 @@ function App() {
 
     const [currentPage, setCurrentPage] = useState ('signin')
     const [user, setUser] = useState (null)
-    const [registration, setRegistrationPage] = useState ('Register')
 
-    if (currentPage === 'signin') {
-      return (
+        return (
       <>
-      <Login setCurrentPage={setCurrentPage} setUser={setUser}/>
-      </>
-    )
-  }
+      <div>
+      <Navbar />
+        <Header />
+        <main>
+        {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
+          {currentPage === 'dashboard' && <Dashboard user={user}/>}
+          {currentPage === 'Register' && <Register setCurrentPage={setCurrentPage}/>}
+        </main>
+      </div>
+      <div className="border-line"></div>
+      <footer className="flex justify-center" style={{marginTop: '20px'}}>Copyright 2023</footer></>   
+  )
+}
 
-    if (currentPage === 'dashboard') {
-      return (
-        <>
-      <Dashboard user={user} />
-      </>
-    )
-  }
 
-    if (currentPage === registration) {
-      return (
-        <>
-        <Register setRegistrationPage={setRegistrationPage}/> 
-        </>
-      )
-    }
-  }
+  //   if (currentPage === 'signin') {
+  //     return (
+  //     <>
+  //     <Login setCurrentPage={setCurrentPage} setUser={setUser}/>
+  //     </>
+  //   )
+  // }
+
+  //   if (currentPage === 'dashboard') {
+  //     return (
+  //       <>
+  //     <Dashboard user={user} />
+  //     </>
+  //   )
+  // }
+
+  //   if (currentPage === registration) {
+  //     return (
+  //       <>
+  //       <Register setRegistrationPage={setRegistrationPage}/> 
+  //       </>
+  //     )
+  //   }
+  // }
 
 
 

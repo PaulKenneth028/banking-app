@@ -51,7 +51,7 @@ const Login = (props) => {
 
     return (
         
-     <section className="flex flex-col justify-center items-center">
+     <section className="flex flex-col justify-center items-center mt-[100px]">
         <form onSubmit={onSubmit} className="flex flex-col justify-center border-2 p-5 w-[20%] ">
             <Input
                 label='Username'

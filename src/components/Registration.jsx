@@ -16,48 +16,56 @@ const Register = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        console.log()
     }
 
+    // const store = JSON.parse(localStorage.getItem('store'))
+    // const selectedAccounts = store.find(names => username === names.username === value.username)
+    // const errorValidation = {};
+
+    // if (selectedAccounts) {
+    //     errorValidation.username = 'Username is already in use'
+    // }
+
+    // if (selectedAccounts && selectedAccounts.emailAddress === value.username) {
+    //     errorValidation.emailAddress
+    // }
+
     const onClick = () => {
-        console.log('redirected to signin')
-        setCurrentPage('signin')
+        setCurrentPage('signin')   
     }
 
     return ( 
-        <div>
-            <form onSubmit={onSubmit}>
-        
-            <Input
-               label='Username'
-               type='text'
-               value={username}
-               onChange={onSetNameUser}
-               required
-            />
+        <><div className="flex justify-center items-center mt-[100px]">
+            <form onSubmit={onSubmit} className="flex justify-center flex-col items-center w-[500px] border-2">
 
-            <Input 
-                label= 'Email Address'
-                type= 'Email'
-                value={emailAddress}
-                onChange={onSetEmailAddress}
-            />
+                <Input
+                    label='Username'
+                    type='text'
+                    value={username}
+                    onChange={onSetNameUser}
+                    required />
 
-            <Input 
-                label= 'Password'
-                type= 'password'
-                value={password}
-                onChange={onSetYourPassword}
-            />
-            <Input 
-                label= 'Confirm Password'
-                type= 'password'
-                value={confirmPassword}
-                onChange={onSetConfirmPassword}
-            />
-            <button type="submit">Submit</button>
-        </form>
-        <button onClick={onClick}> Do you have an account? Login here!</button>
-    </div>
+                <Input
+                    label='Email Address'
+                    type='Email'
+                    value={emailAddress}
+                    onChange={onSetEmailAddress} />
+
+                <Input
+                    label='Password'
+                    type='password'
+                    value={password}
+                    onChange={onSetYourPassword} />
+                <Input
+                    label='Confirm Password'
+                    type='password'
+                    value={confirmPassword}
+                    onChange={onSetConfirmPassword} />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div className="flex justify-center mt-10"><button onClick={onClick} style={{fontFamily: 'cursive'}}> Do you have an account? Login here!</button></div></>
     ) 
 }
 
