@@ -22,8 +22,6 @@ const Login = (props) => {
 
      const accounts = JSON.parse(localStorage.getItem('accounts'))
      
-
-     
      const accountSelected = accounts.find(names => Username === names.Username)
      if (!accountSelected) {
         setUserError ('Username not found')

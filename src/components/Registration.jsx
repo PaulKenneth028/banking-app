@@ -1,8 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Input from "./InputLogin"
 import { useNavigate } from "react-router-dom"
 
 const Register = (props) => {
+
     const {setCurrentPage, setUser} = props
     const [username, setNameUser] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
@@ -13,27 +14,18 @@ const Register = (props) => {
     const onSetEmailAddress = (e) => setEmailAddress (e.target.value)
     const onSetYourPassword = (e) => setyourPassword (e.target.value)
     const onSetConfirmPassword = (e) => setConfirmPassword (e.target.value) 
-
+    
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log()
+        localStorage.setItem ('userinfo', JSON.stringify([username, emailAddress, password, confirmPassword]))
+        console.log(localStorage)
     }
-
-    // const store = JSON.parse(localStorage.getItem('store'))
-    // const selectedAccounts = store.find(names => username === names.username === value.username)
-    // const errorValidation = {};
-
-    // if (selectedAccounts) {
-    //     errorValidation.username = 'Username is already in use'
-    // }
-
-    // if (selectedAccounts && selectedAccounts.emailAddress === value.username) {
-    //     errorValidation.emailAddress
-    // }
 
     const onClick = () => {
         setCurrentPage('signin')   
     }
+
+    
 
     return ( 
         <><div className="flex justify-center items-center mt-[100px]">
