@@ -1,25 +1,31 @@
 body{
   background-color: pink;
 }
-.navContainer {
-  border: 1px solid red;
-}
 .navContainer ul {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-evenly;
   margin-right: 60px;
+  align-items: center;
+}
+#headerLogo {
+  display: flex;
+  align-items: center;
+}
+#imgLogo {
+  border: 1px solid black;
+  height: 50px;
+  width: 100px;
 }
 .navContainer li {
-  padding: 20px
+  padding: 20px;
 }
 input {
   display: flex;
   justify-content: center;
 }
 
-.dashNav {
- border: 1px solid red
-}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

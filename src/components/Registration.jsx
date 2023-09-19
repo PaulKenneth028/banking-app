@@ -16,38 +16,50 @@ const Register = (props) => {
     const onSetEmailAddress = (e) => setEmailAddress (e.target.value)
     const onSetYourPassword = (e) => setyourPassword (e.target.value)
     const onSetConfirmPassword = (e) => setConfirmPassword (e.target.value)
-   
-    
+
+    useEffect (() => {
+        const accountsCreated = [{
+            username, 
+            emailAddress, 
+            password, 
+            confirmPassword
+        }]
+        localStorage.setItem('newAccounts', JSON.stringify(accountsCreated))
+    }, [username, 
+        emailAddress, 
+        password, 
+        confirmPassword])
+
     const onSubmit = (e) => {
-        e.preventDefault()
-        setErrorUser('')
-        setErrorConfirmPassword('')
-
-    const selectedAccounts = JSON.parse(localStorage.getItem('accounts'))
+    e.preventDefault()
     
-    if (selectedAccounts === selectedAccounts) {
-        setErrorUser ('User name has already been taken')
-        return
-     }
+    const newAccount = JSON.parse(localStorage.getItem('newAccounts'))
 
-     if (password !== confirmPassword) {
-        setErrorConfirmPassword('Password does not match')
-        return
+    
+    if (newAccount === newAccount) {
+        setErrorUser('Username has already been taken')
+        console.log ('Username has already been taken')
      }
+    else if (newAccount !== newAccount) {
+        console.log('Thank you')
+    }
 
-     if(selectedAccounts.password === confirmPassword) {
-        setUser('')
+     if(password == confirmPassword) {
         setCurrentPage('signin')
-        setErrorUser('')
-        setErrorConfirmPassword('')
+        
+     }
+     else if (password !== confirmPassword) {
+        setErrorConfirmPassword('Password do not match')
+        console.log('Password do not match')
      }
     } 
+
+
+ 
 
     const onClick = () => {
         setCurrentPage('signin')   
     }
-
-    
 
     return ( 
         <><div className="flex justify-center items-center mt-[100px]">
@@ -57,9 +69,10 @@ const Register = (props) => {
                     label='Username'
                     type='text'
                     value={username}
+                    autocomplete='off'
                     onChange={onSetNameUser}
                     required 
-                    /> {errorUser && (<small>{setErrorUser}</small>)}
+                    /> 
 
                 <Input
                     label='Email Address'
@@ -72,18 +85,18 @@ const Register = (props) => {
                     label='Password'
                     type='password'
                     value={password}
-                    onChange={onSetYourPassword} 
+                    onChange={onSetYourPassword}
+                    required
                     />
-                    {errorConfirmPassword && (<small>{setErrorConfirmPassword}</small>)}
-                 {}
+                    
 
                 <Input
                     label='Confirm Password'
                     type='password'
                     value={confirmPassword}
                     onChange={onSetConfirmPassword} 
+                    required
                     />
-                    {errorConfirmPassword && (<small>{setErrorConfirmPassword}</small>)}
 
                 <button type="submit">Submit</button>
             </form>

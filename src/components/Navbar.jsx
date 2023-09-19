@@ -5,6 +5,8 @@ const Navbar = () => {
     <div className="navContainer">
                 <nav>
                     <ul>
+                    
+                        <li className="text-4xl" id="headerLogo"><img src="src/components/Images/background-logo.png" alt="imgLogo" id="imgLogo"/>Bank mo to</li>
                         <li><a href="">Home</a></li>
                         <li><a href="">Support</a></li>
                         <li><a href="">Contact</a></li>

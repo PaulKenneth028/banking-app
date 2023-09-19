@@ -1,4 +1,4 @@
-import Header from "./components/Header"
+// import Header from "./components/Header"
 import Register from "./components/Registration"
 import { useEffect, useState } from "react"
 import Login from "./components/login-forms"
@@ -8,29 +8,29 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 
 function App() {
-    useEffect(() => {
-      const accounts = [
-        {
-          Username: 'Kenski28',
-          Password: '062823',
-        },
-        {
-          Username: '',
-          Password: '',
-        }
-      ]
+    // useEffect(() => {
+    //   const accounts = [
+    //     {
+    //       Username: 'Kenski28',
+    //       Password: '062823',
+    //     },
+    //     {
+    //       Username: '',
+    //       Password: '',
+    //     }
+    //   ]
 
-      localStorage.setItem('accounts', JSON.stringify(accounts))
-    }, [])
-
+    //   localStorage.setItem('accounts', JSON.stringify(accounts))
+    // }, [])
+    
     const [currentPage, setCurrentPage] = useState ('signin')
     const [user, setUser] = useState (null)
+
 
         return (
       <>
       <div>
       <Navbar />
-        <Header />
         <main>
         {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
           {currentPage === 'dashboard' && <Dashboard user={user}/>}
