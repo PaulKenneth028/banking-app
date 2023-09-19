@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import Input from "./InputLogin"
 import { useNavigate } from "react-router-dom"
+import './Registration.css'
 
 const Register = (props) => {
 
@@ -9,10 +10,12 @@ const Register = (props) => {
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setyourPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [accountNumber, setAccountNumber] = useState('')
     const [errorConfirmPassword, setErrorConfirmPassword] = useState('')
     const [errorUser, setErrorUser] = useState ('')
 
     const onSetNameUser = (e) => setNameUser(e.target.value)
+    const onSetAccountNumber = (e) => setAccountNumber(e.target.value)
     const onSetEmailAddress = (e) => setEmailAddress (e.target.value)
     const onSetYourPassword = (e) => setyourPassword (e.target.value)
     const onSetConfirmPassword = (e) => setConfirmPassword (e.target.value)
@@ -62,7 +65,8 @@ const Register = (props) => {
     }
 
     return ( 
-        <><div className="flex justify-center items-center mt-[100px]">
+        <>
+        <div className="flex justify-center items-center mt-[100px]">
             <form onSubmit={onSubmit} className="flex justify-center flex-col items-center w-[500px] border-2">
 
                 <Input
@@ -74,6 +78,15 @@ const Register = (props) => {
                     required 
                     /> 
 
+                <Input
+                    className="accountNumber"
+                    label='Account Number'
+                    type='number'
+                    value={accountNumber}
+                    onChange={onSetAccountNumber}
+                    required 
+                    /> 
+                        
                 <Input
                     label='Email Address'
                     type='Email'

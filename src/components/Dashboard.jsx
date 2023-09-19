@@ -7,6 +7,8 @@ const Dashboard = (props) => {
     const { user } = props
     const {setCurrentPage, setUser} = props
 
+    
+
     return ( <>
     <div className="dashboard">
             <h1 className="userName">Welcome {user.Username}!,</h1>

@@ -1,7 +1,7 @@
 
 
 const Input = (props) => {
-    const { label, type, id } = props;
+    const { label, type, id, required} = props;
 
     return (
         <>
@@ -10,6 +10,7 @@ const Input = (props) => {
                 title={label}
                 type={type}
                 id={id}
+                required={required}
             />
         </>
     )
