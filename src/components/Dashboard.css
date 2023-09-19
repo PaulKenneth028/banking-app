@@ -2,41 +2,87 @@
      display: grid;
      justify-content: center;
      align-items: center;
-     grid-template-columns: 200px 200px 200px 200px;
-     grid-template-rows: 50px 50px 50px 50px;
+     grid-template-columns: 200px 200px 300px 10px 200px;
+     grid-template-rows: 100px 100px 100px 5px 100px;
      grid-template-areas: 
-     "username ... ... ..."
-     "balance ... ... addcard"
-     "addmoneyBtn ... ... sendmoney"
+     "username username ... ... history"
+     "balance ... totalsavings ... history"
+     "addmoneyBtn ... sendmoney ... history"
+     "... ... addcard ... history"
+     "... ... ... ... history"
      ;
-     border: 1px solid;
+     border: 3px solid;
+     max-width: 100%;
+     padding: 20px;
 }
-   
-.userName {
-     grid-area: username;
-     font-family: sans-serif;
-     font-size: larger;
-     width: 500px;
+
+.menuBtn {
+    display: grid;
+    grid-area: menu;
+}
+
+.transHistory {
+    grid-area: history;
+    border: 1px solid black;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    padding: 20px;
+}
+
+#balanceAmount {
+    display: flex;
+    justify-content: center;
 }
 
 .currentBalance {
     grid-area: balance;
     font-family: sans-serif;
-     font-size: larger;
+    font-size: 30px;
+    width: 300px;
+    background-color: lightgray;
+    display: grid;
+    justify-content: center;
+    
+}
+
+.totalSavings {
+    grid-area: totalsavings;
+    font-family: sans-serif;
+     font-size: 30px;
+     width: 300px;
+     background-color: lightgray;
+     display: grid;
+    justify-content: center;
+}
+
+
+.userName {
+    margin-top: 30px;
+     grid-area: username;
+     font-family: sans-serif;
+     font-size: 35px;
      width: 500px;
 }
 
 .addMoneyBtn {
     grid-area: addmoneyBtn;
     background-color: white;
+    margin-left: 80px;
+    width: 150px;
 }
 
 .sendMoney {
     grid-area: sendmoney;
     background-color: white;
+    margin-left: 80px;
+    width: 150px;
 }
 
 .addCard {
     grid-area: addcard;
     background-color: white;
+    margin-left: 80px;
+    width: 150px;
 }
