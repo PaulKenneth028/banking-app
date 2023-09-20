@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Input from "./InputLogin"
-import { useNavigate } from "react-router-dom"
+import { redirect, useNavigate } from "react-router-dom"
 
 
 
@@ -17,29 +17,32 @@ const Login = (props) => {
      
      const onSubmit = (e) => {
         e.preventDefault()
-        setPassError('')
-        setUserError('')
-
-     const accounts = JSON.parse(localStorage.getItem('accounts'))
+      
+        const accounts = JSON.parse(localStorage.getItem('accounts'))
      
-     const accountSelected = accounts.find(names => Username === names.Username)
-     if (!accountSelected) {
-        setUserError ('Username not found')
-        return
-     }
+        const accountSelected = accounts.find(userAccount => userAccount.Username === Username)
 
-     if (accountSelected?.Password !== Password) {
-        setPassError ('Username and Password does not match')
-        return
-     }
+        if (!accountSelected) {
+            setUserError('User does not exist')
+            return
+        }
 
-     if (accountSelected.Password === Password) {
-        setUser(accountSelected)
-        setCurrentPage('dashboard')
-        setUserError('')
-        setPassError('')
-        return
-     }
+        if (accountSelected?.Password !== Password){
+            setPassError('Username and password did not match')
+            return
+        }
+
+        if (accountSelected.Password == Password) {
+            console.log('redirect to dash')
+            setUserError('')
+            setPassError('')
+        }
+
+        console.log ({
+            userError,
+            passError
+        })
+   
     }
     
     const onClick = () => {

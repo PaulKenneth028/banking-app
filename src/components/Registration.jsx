@@ -13,6 +13,7 @@ const Register = (props) => {
     const [accountNumber, setAccountNumber] = useState('')
     const [errorConfirmPassword, setErrorConfirmPassword] = useState('')
     const [errorUser, setErrorUser] = useState ('')
+    
 
     const onSetNameUser = (e) => setNameUser(e.target.value)
     const onSetAccountNumber = (e) => setAccountNumber(e.target.value)
@@ -20,45 +21,51 @@ const Register = (props) => {
     const onSetYourPassword = (e) => setyourPassword (e.target.value)
     const onSetConfirmPassword = (e) => setConfirmPassword (e.target.value)
 
-    useEffect (() => {
-        const accountsCreated = [{
-            username, 
-            emailAddress, 
-            password, 
-            confirmPassword
-        }]
-        localStorage.setItem('newAccounts', JSON.stringify(accountsCreated))
-    }, [username, 
-        emailAddress, 
-        password, 
-        confirmPassword])
+    // useEffect (() => {
+    //     let accountsCreated = [{
+    //         username, 
+    //         accountNumber,
+    //         emailAddress, 
+    //         password, 
+    //         confirmPassword
+    //     }]
+    //     localStorage.setItem('accounts', JSON.stringify(accountsCreated))
+    // }, [username, 
+    //     accountNumber,
+    //     emailAddress, 
+    //     password, 
+    //     confirmPassword])
 
     const onSubmit = (e) => {
     e.preventDefault()
-    
-    const newAccount = JSON.parse(localStorage.getItem('newAccounts'))
 
+    let existingAccounts = JSON.parse(localStorage.getItem('accounts'))
+    let account = existingAccounts.find ((item) => {
+        return item.username === username
+        
+    })
     
-    if (newAccount === newAccount) {
-        setErrorUser('Username has already been taken')
-        console.log ('Username has already been taken')
-     }
-    else if (newAccount !== newAccount) {
-        console.log('Thank you')
+    if (account) {
+        return
     }
 
-     if(password == confirmPassword) {
+    if(password === confirmPassword) {
+        let newAccount = {
+            username,
+            password,
+        }
+        localStorage.setItem('accounts', JSON.stringify([
+            ...existingAccounts, 
+            newAccount,
+        ]))
         setCurrentPage('signin')
-        
+        console.log('Account has been created')
      }
      else if (password !== confirmPassword) {
         setErrorConfirmPassword('Password do not match')
         console.log('Password do not match')
      }
     } 
-
-
- 
 
     const onClick = () => {
         setCurrentPage('signin')   
