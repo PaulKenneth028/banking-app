@@ -34,7 +34,6 @@ const Register = (props) => {
     })
     
     if (account) {
-        console.log('Username has already been taken')
         setErrorUser('Username has already been taken')
     } else if(password === confirmPassword) {
         let newAccount = {
