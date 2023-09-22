@@ -1,13 +1,13 @@
 // import Header from "./components/Header"
 import Register from "./components/Registration"
 import { useEffect, useState } from "react"
-import Login from "./components/login-forms"
+import Login from "./components/Login"
 import Dashboard from "./components/Dashboard"
 import Navbar from "./components/Navbar"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-
-
-
+import Transfer from "./components/Transfer"
+import LinkedCards from "./components/LinkedCards"
+import Transaction from "./components/Transaction"
 
 function App() {
 
@@ -24,8 +24,7 @@ function App() {
     // }, [])
     
     const [currentPage, setCurrentPage] = useState ('signin')
-    const [user, setUser] = useState (null)
-
+    const [user, setUser] = useState(null)
 
         return (
       <>
@@ -33,8 +32,11 @@ function App() {
       <Navbar />
         <main>
         {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
-          {currentPage === 'dashboard' && <Dashboard user={user}/>}
+          {currentPage === 'dashboard' && <Dashboard user={user} setCurrentPage={setCurrentPage}/>}
           {currentPage === 'Register' && <Register setCurrentPage={setCurrentPage}/>}
+          {currentPage === 'transaction' && <Transaction user={user} setCurrentPage={setCurrentPage}/>}
+          {currentPage === 'transfer' && <Transfer user={user} setCurrentPage={setCurrentPage}/>}
+          {currentPage === 'linkedcards' && <LinkedCards user={user} setCurrentPage={setCurrentPage}/>}
         </main>
       </div>
       <div className="border-line"></div>

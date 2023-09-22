@@ -5,14 +5,16 @@ import './Registration.css'
 
 const Register = (props) => {
 
-    const {setCurrentPage, setUser} = props
+    const { setCurrentPage } = props
+
     const [username, setNameUser] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setyourPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [accountNumber, setAccountNumber] = useState('')
     const [errorConfirmPassword, setErrorConfirmPassword] = useState('')
-    const [errorUser, setErrorUser] = useState ('')
+    const [errorUser, setErrorUser] = useState('')
+    const [currentBalance, setCurrentBalance] = useState(5000)
     
 
     const onSetNameUser = (e) => setNameUser(e.target.value)
@@ -20,21 +22,6 @@ const Register = (props) => {
     const onSetEmailAddress = (e) => setEmailAddress (e.target.value)
     const onSetYourPassword = (e) => setyourPassword (e.target.value)
     const onSetConfirmPassword = (e) => setConfirmPassword (e.target.value)
-
-    // useEffect (() => {
-    //     let accountsCreated = [{
-    //         username, 
-    //         accountNumber,
-    //         emailAddress, 
-    //         password, 
-    //         confirmPassword
-    //     }]
-    //     localStorage.setItem('accounts', JSON.stringify(accountsCreated))
-    // }, [username, 
-    //     accountNumber,
-    //     emailAddress, 
-    //     password, 
-    //     confirmPassword])
 
     const onSubmit = (e) => {
     e.preventDefault()
@@ -46,24 +33,25 @@ const Register = (props) => {
     })
     
     if (account) {
-        return
+        console.log('Username has already been taken')
+        setErrorUser('Username has already been taken')
     }
 
     if(password === confirmPassword) {
         let newAccount = {
             username,
             password,
+            accountNumber,
+            currentBalance,
         }
         localStorage.setItem('accounts', JSON.stringify([
             ...existingAccounts, 
             newAccount,
         ]))
         setCurrentPage('signin')
-        console.log('Account has been created')
      }
      else if (password !== confirmPassword) {
-        setErrorConfirmPassword('Password do not match')
-        console.log('Password do not match')
+        setErrorConfirmPassword('Password and confirm password do not match')
      }
     } 
 
@@ -84,7 +72,7 @@ const Register = (props) => {
                     onChange={onSetNameUser}
                     required 
                     /> 
-
+           {errorUser && <small>{errorUser}</small>}
                 <Input
                     className="accountNumber"
                     label='Account Number'
@@ -117,7 +105,7 @@ const Register = (props) => {
                     onChange={onSetConfirmPassword} 
                     required
                     />
-
+                {errorConfirmPassword && <small>{errorConfirmPassword}</small>}
                 <button type="submit">Submit</button>
             </form>
         </div>

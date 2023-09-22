@@ -3,13 +3,14 @@
      justify-content: center;
      align-items: center;
      grid-template-columns: 200px 200px 200px 200px 150px 450px ; 
-     grid-template-rows: 100px 100px 100px 5px 100px;
+     grid-template-rows: 100px 100px 100px 5px 80px 5px;
      grid-template-areas: 
      "menu username ...  ... ... history"
      "menu balance ...  totalsavings ... history"
      "menu addmoneyBtn ... sendmoney ... history"
-     "... ... ... addcard ... history"
-     "... ... ... ... ... history"
+     "... inputfield inputfield addcard ... history"
+     "... withdrawBtn ... ... ... history"
+     "... inputfieldWdraw ... ... ... ..."
      ;
      border: 3px solid;
      max-width: 100%;
@@ -69,6 +70,13 @@
     width: 150px;
 }
 
+.withdrawBtn {
+    grid-area: withdrawBtn;
+    background-color: white;
+    margin-left: 80px;
+    width: 150px;
+}
+
 .sendMoney {
     grid-area: sendmoney;
     background-color: white;
@@ -83,13 +91,6 @@
     width: 150px;
 }
 
-.btnDash {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
 .menuBtn {
     display: flex;
     grid-area: menu;
@@ -101,4 +102,26 @@
     padding-top: 50px;
     margin-top: 60px;
    
+}
+
+.btn:hover{
+    transform: scale(1.3);
+    z-index: 2;
+    
+}
+
+.inputData {
+    grid-area: inputfield;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-right: 100px;
+}
+
+.inputDataWdraw{
+    grid-area: inputfieldWdraw;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-left: 105px;
 }
