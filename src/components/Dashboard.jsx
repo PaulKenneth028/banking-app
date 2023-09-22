@@ -8,11 +8,11 @@ const Dashboard = (props) => {
     const { user, setCurrentPage } = props
     const [ addMoney, setAddMoney] = useState(false)
 
-    const data = [{
-        withdraw: '',
-        transfer:'',
-        deposit:''
-    }]
+    // const data = [{
+    //     withdraw: '',
+    //     transfer:'',
+    //     deposit:''
+    // }]
 
     
 
@@ -22,6 +22,10 @@ const Dashboard = (props) => {
 
     const transactionbtn = (() => {
         setCurrentPage('transaction')
+    })
+
+    const historyBtn = (() => {
+        setCurrentPage('history')
     })
 
     const transferBtn = (() => {
@@ -46,12 +50,12 @@ const Dashboard = (props) => {
 
             </div>
             <div className='totalSavings'>
-                <label id='balanceAmount'>P{user.currentBalance}</label>
+                <label id='balanceAmount'>P{user.totalSavings}</label>
                 <p className='totalBalanceSavings'>Total Savings</p>
             </div>
            <button className="addMoneyBtn" onClick={addMoneyBtn} >Add Money</button>
            <button className="withdrawBtn">Withdraw</button>
-                <p className='transHistory'>Transaction History</p>
+                <button className='transHistory' onClick={historyBtn}>Transaction History</button>
         
             <button className="sendMoney">Send Money</button>
             <button className="addCard">Add Card</button>

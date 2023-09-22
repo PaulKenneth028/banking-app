@@ -15,6 +15,7 @@ const Register = (props) => {
     const [errorConfirmPassword, setErrorConfirmPassword] = useState('')
     const [errorUser, setErrorUser] = useState('')
     const [currentBalance, setCurrentBalance] = useState(5000)
+    const [totalSavings, setTotalSavings] = useState(1000)
     
 
     const onSetNameUser = (e) => setNameUser(e.target.value)
@@ -27,7 +28,7 @@ const Register = (props) => {
     e.preventDefault()
 
     let existingAccounts = JSON.parse(localStorage.getItem('accounts'))
-    let account = existingAccounts.find ((item) => {
+    let account = existingAccounts.find((item) => {
         return item.username === username
         
     })
@@ -35,14 +36,14 @@ const Register = (props) => {
     if (account) {
         console.log('Username has already been taken')
         setErrorUser('Username has already been taken')
-    }
-
-    if(password === confirmPassword) {
+    } else if(password === confirmPassword) {
         let newAccount = {
             username,
             password,
+            emailAddress,
             accountNumber,
             currentBalance,
+            totalSavings,
         }
         localStorage.setItem('accounts', JSON.stringify([
             ...existingAccounts, 

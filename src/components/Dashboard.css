@@ -5,11 +5,11 @@
      grid-template-columns: 200px 200px 200px 200px 150px 450px ; 
      grid-template-rows: 100px 100px 100px 5px 80px 5px;
      grid-template-areas: 
-     "menu username ...  ... ... history"
-     "menu balance ...  totalsavings ... history"
+     "menu username ...  ... ... ..."
+     "menu balance ...  totalsavings ... ..."
      "menu addmoneyBtn ... sendmoney ... history"
-     "... inputfield inputfield addcard ... history"
-     "... withdrawBtn ... ... ... history"
+     "... inputfield inputfield addcard ... ..."
+     "... withdrawBtn ... ... ... ..."
      "... inputfieldWdraw ... ... ... ..."
      ;
      border: 3px solid;
@@ -26,6 +26,7 @@
     width: 500px;
     padding: 20px;
     border-radius: 30%;
+    align-items: center;
 }
 
 #balanceAmount {
