@@ -29,7 +29,7 @@ const Register = (props) => {
 
     let existingAccounts = JSON.parse(localStorage.getItem('accounts'))
     let account = existingAccounts.find((item) => {
-        return item.username === username
+        return item.username === username && item.emailAddress && item.accountNumber
         
     })
     

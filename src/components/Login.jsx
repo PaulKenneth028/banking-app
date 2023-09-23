@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Input from "./InputLogin"
 import { redirect, useNavigate } from "react-router-dom"
 
@@ -16,6 +16,9 @@ const Login = (props) => {
      
      const [userError, setErrorUser] = useState('')
      const [passError, setPassError] = useState ('')
+     const [isLocked, setIsLocked] = useState(false);
+     const [message, setMessage] = useState('');
+     const [loginAttempts, setLoginAttempts] = useState(0);
 
     //  const onusernameChange = (e) => setLoginUser(e.target.value)
     //  const onpasswordChange = (e) => setLoginUser (e.target.value)
@@ -30,30 +33,57 @@ const Login = (props) => {
      
      const onSubmit = (e) => {
         e.preventDefault()
+
+        if (isLocked) {
+            setMessage('Account locked. Try again later.');
+            return;
+          }
       
         const accounts = JSON.parse(localStorage.getItem('accounts')) || []
         const account = accounts.find((account) => {
             return account.username === loginUser.username 
         })
         if (!account) {
-            setErrorUser ('Username does not exist')
-            return
+           setErrorUser ('Username does not exist')
+           return
         }
         
         if (account.password !== loginUser.password) {
+            setLoginAttempts(loginAttempts + 1)
             setPassError ('Username and Password does not match')
             return
         }
-        
-        if ( account.username === loginUser.username && account.password === loginUser.password) {
-            setUser(account)
-            setCurrentPage('dashboard')
+
+        if (loginAttempts >= 2) {
+            setIsLocked(true);
+            setMessage('Account locked. Try again later.');
+
+            setTimeout(() => {
+                setIsLocked(false);
+                setMessage('');
+                setLoginAttempts(0);
+              }, 60000); 
+              return
+            } 
+        // if ( account.username === loginUser.username && account.password === loginUser.password) {
+        //     setUser(account)
+        //     setCurrentPage('dashboard')
+        // }
+        setErrorUser('');
+        setPassError('');
+        setUser(account)
+        setCurrentPage('dashboard')
         }
-    }
-    
+  
     const onClick = () => {
       setCurrentPage('Register')
     }
+
+    useEffect(() => {
+        
+        setErrorUser('');
+        setPassError('');
+      }, []);
 
     return (
         
@@ -78,6 +108,7 @@ const Login = (props) => {
             {passError && (<small >{passError}</small>)}
             <button id="button1" type="submit" style={{backgroundColor: "white", 
             marginTop: "10px", width: "50px", fontSize: "13px", borderRadius: "50%"}}>Sign-in</button>
+            {message && <p>{message}</p>}
         </form>
             <button onClick={onClick}> No account yet? Signup here!</button>
      </section>

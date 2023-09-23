@@ -4,45 +4,72 @@ import { useState } from "react";
 
 
 const Transfer = (props) => {
-    const {user, setCurrentPage} = props
-    const storedAccounts = JSON.parse(localStorage.getItem('accounts'))
-    const [sendMoney, setSendMoney] = useState({
-        amount:"",
-        password:""
-    })
-    const [errorSending, setErrorSending] = useState({})
+    const { user, setCurrentPage, setUser } = props;
+    const [transferAmount, setTransferAmount] = useState('');
+    const [receiverUsername, setReceiverUsername] = useState('');
 
-    const onSetSendMoney = (e) => setSendMoney (e.target.value)
+    const onSetTransferAmount = (e) => setTransferAmount(e.target.value);
+    const onSetReceiverUsername = (e) => setReceiverUsername(e.target.value);
 
-    const errorValidation = (e) => {
-        e.preventDefault()
-        const checkBalance = user.balance < sendMoney.amount
-        const accountValidation = storedAccounts.find((account) => account.username === sendMoney.username)
-        const moneyValidationError = {}
 
-        if (!checkBalance) {
-            moneyValidationError.amount = 'Insufficient Funds'
+    const transferBtn = (e) => {
+        e.preventDefault();
+        const storedAccounts = JSON.parse(localStorage.getItem('accounts')) || [];
+        const senderAccount = storedAccounts.find(account => account.accountNumber === user.accountNumber);
+        const receiverAccount = storedAccounts.find(account => account.accountNumber === receiverUsername);
+    
+        if (!receiverAccount) {
+          alert('Receiver account not found.');
+          return;
         }
-        if(!sendMoney.amount){
-            moneyValidationError.noamount = 'Please enter valid amount'
+    
+        const amountToTransfer = parseFloat(transferAmount);
+    
+        if (!isNaN(amountToTransfer) && amountToTransfer > 0 && senderAccount.currentBalance >= amountToTransfer) {
+          senderAccount.currentBalance -= amountToTransfer;
+          receiverAccount.currentBalance += amountToTransfer;
+    
+          localStorage.setItem('accounts', JSON.stringify(storedAccounts));
+          setUser(user);
+          setTransferAmount('');
+          setReceiverUsername('');
+          alert(`Transfer Successful. Current balance: P${user.currentBalance}`);
+        } else {
+          alert('Invalid transfer amount or insufficient funds.');
         }
-        if(!accountValidation) {
-            moneyValidationError.username = 'Account number provided does not match'
-        }
-    }
+      };
 
-    const dashboardBtn = (() => {
-        setCurrentPage('dashboard')
-    })
-    return ( <div>
-            <form type="submit" onSubmit={errorValidation}>
-            <p>P{user.currentBalance}</p>
-            <input type="text" placeholder="Enter Amount" onChange={onSetSendMoney}/>
-            <button>Transfer</button>
-      </form>
-        <button onClick={dashboardBtn}>Dashboard</button>
+    const dashboardBtn = () => {
+    setCurrentPage('dashboard');
+  }
+
+return (
+    <div style={{display:'flex', flexDirection:'column'}} className='flex justify-center items-center'>
+        <form action="">
+        <div>
+        <label>Receiver Account:</label>
+        <input
+          type="text"
+          value={receiverUsername}
+          onChange={onSetReceiverUsername}
+        />
+      </div>
+      <div>
+        <label>Transfer Amount:</label>
+        <input
+          type="number"
+          value={transferAmount}
+          onChange={onSetTransferAmount}
+        />
+        <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+        <button onClick={transferBtn} style={{backgroundColor: "white", marginTop: '10px'}}>Transfer</button>
         </div>
-    )
+      </div>
+      </form>
+      <button onClick={dashboardBtn}>Go to Dashboard</button>
+    </div>
+    
+  );
 }
 
-export default Transfer
+export default Transfer;

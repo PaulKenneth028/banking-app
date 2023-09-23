@@ -40,7 +40,7 @@ function App() {
           {currentPage === 'dashboard' && <Dashboard user={user} setCurrentPage={setCurrentPage}/>}
           {currentPage === 'Register' && <Register setCurrentPage={setCurrentPage}/>}
           {currentPage === 'transaction' && <Transaction user={user} setUser={setUser} setCurrentPage={setCurrentPage}/>}
-          {currentPage === 'transfer' && <Transfer user={user} setCurrentPage={setCurrentPage}/>}
+          {currentPage === 'transfer' && <Transfer user={user} setCurrentPage={setCurrentPage} setUser={setUser}/>}
           {currentPage === 'linkedcards' && <LinkedCards user={user} setCurrentPage={setCurrentPage}/>}
           {currentPage === 'history' && <TransactionHistory user={user} setCurrentPage={setCurrentPage}/>}
         </main>

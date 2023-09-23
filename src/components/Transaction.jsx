@@ -16,7 +16,7 @@ const Transaction = (props) => {
         e.preventDefault()
         const storedAccounts = JSON.parse(localStorage.getItem('accounts')) || []
         const accountUpdate = storedAccounts.map((account) => {
-            if (account.emailAddress === user.emailAddress) {
+            if (account.username === user.username) {
             const depositedAmount = parseFloat(depositAmount)
             account.currentBalance += depositedAmount;
             // if (!isNaN(depositedAmount) && depositedAmount > 0) {
@@ -36,8 +36,8 @@ const Transaction = (props) => {
       e.preventDefault()
       const storedAccounts = JSON.parse(localStorage.getItem('accounts')) || []
       const accountUpdate = storedAccounts.map((account) => {
-          if (account.emailAddress === user.emailAddress) {
-          const withdrawedAmount = parseInt(withdrawAmount)
+          if (account.username === user.username) {
+          const withdrawedAmount = parseFloat(withdrawAmount)
           if (!isNaN(withdrawedAmount) && withdrawedAmount > 0) {
             account.currentBalance -= withdrawedAmount;
             alert(`Withdraw Successful Current balance: P${user.currentBalance}`)
