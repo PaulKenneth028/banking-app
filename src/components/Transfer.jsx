@@ -15,7 +15,7 @@ const Transfer = (props) => {
     const transferBtn = (e) => {
         e.preventDefault();
         const storedAccounts = JSON.parse(localStorage.getItem('accounts')) || [];
-        const senderAccount = storedAccounts.find(account => account.accountNumber === user.accountNumber);
+        const senderAccount = storedAccounts.find(account => account.currentBalance === user.currentBalance);
         const receiverAccount = storedAccounts.find(account => account.accountNumber === receiverUsername);
     
         if (!receiverAccount) {

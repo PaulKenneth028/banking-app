@@ -74,6 +74,7 @@ const Login = (props) => {
         setUser(account)
         setCurrentPage('dashboard')
         }
+
   
     const onClick = () => {
       setCurrentPage('Register')

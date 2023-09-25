@@ -36,6 +36,14 @@ function App() {
       <div>
       <Navbar />
         <main>
+{/* 
+        <BrowserRouter>
+          <Routes>
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Registration" element={<Register user={user}/>} />
+              <Route path="/Dashboard" element={<Dashboard user={user} setCurrentPage={setCurrentPage} />} />
+          </Routes>
+          </BrowserRouter> */}
         {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
           {currentPage === 'dashboard' && <Dashboard user={user} setCurrentPage={setCurrentPage}/>}
           {currentPage === 'Register' && <Register setCurrentPage={setCurrentPage}/>}

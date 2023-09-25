@@ -45,12 +45,12 @@ const Dashboard = (props) => {
             <h1 className="userName">Welcome {user.username}!
             <br />Account#:{user.accountNumber}</h1>
             <div className="currentBalance">
-                <label id='balanceAmount'>P{user.currentBalance}</label>
+                <label id='balanceAmount'>P{user.currentBalance.toFixed(2)}</label>
                 <p id='balanceMessage'>Total Balance</p>
 
             </div>
             <div className='totalSavings'>
-                <label id='balanceAmount'>P{user.totalSavings}</label>
+                <label id='balanceAmount'>P{user.totalSavings.toFixed(2)}</label>
                 <p className='totalBalanceSavings'>Total Savings</p>
             </div>
            <button className="addMoneyBtn" onClick={addMoneyBtn} >Add Money</button>
