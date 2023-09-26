@@ -30,27 +30,24 @@ function App() {
     
     const [currentPage, setCurrentPage] = useState ('signin')
     const [user, setUser] = useState(null)
+    const [transactionHistory, setTransactionHistory] = useState([]);
+
+    console.log(transactionHistory)
 
         return (
       <>
       <div>
       <Navbar />
         <main>
-{/* 
-        <BrowserRouter>
-          <Routes>
-              <Route path="/Login" element={<Login />} />
-              <Route path="/Registration" element={<Register user={user}/>} />
-              <Route path="/Dashboard" element={<Dashboard user={user} setCurrentPage={setCurrentPage} />} />
-          </Routes>
-          </BrowserRouter> */}
         {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
           {currentPage === 'dashboard' && <Dashboard user={user} setCurrentPage={setCurrentPage}/>}
           {currentPage === 'Register' && <Register setCurrentPage={setCurrentPage}/>}
-          {currentPage === 'transaction' && <Transaction user={user} setUser={setUser} setCurrentPage={setCurrentPage}/>}
-          {currentPage === 'transfer' && <Transfer user={user} setCurrentPage={setCurrentPage} setUser={setUser}/>}
-          {currentPage === 'linkedcards' && <LinkedCards user={user} setCurrentPage={setCurrentPage}/>}
-          {currentPage === 'history' && <TransactionHistory user={user} setCurrentPage={setCurrentPage}/>}
+          {currentPage === 'transaction' && <Transaction user={user} setUser={setUser} setCurrentPage={setCurrentPage} transactionHistory={transactionHistory} 
+          setTransactionHistory={setTransactionHistory}/>}
+          {currentPage === 'transfer' && <Transfer user={user} setCurrentPage={setCurrentPage} setUser={setUser}  transactionHistory={transactionHistory}
+          setTransactionHistory={setTransactionHistory}/>}
+          {currentPage === 'linkedcards' && <LinkedCards user={user} setCurrentPage={setCurrentPage} />}
+          {currentPage === "history" && <TransactionHistory transactionHistory={transactionHistory} setCurrentPage={setCurrentPage} setTransactionHistory={setTransactionHistory}/>}
         </main>
       </div>
       <div className="border-line"></div>
@@ -58,57 +55,4 @@ function App() {
   )
 }
 
-
-  //   if (currentPage === 'signin') {
-  //     return (
-  //     <>
-  //     <Login setCurrentPage={setCurrentPage} setUser={setUser}/>
-  //     </>
-  //   )
-  // }
-
-  //   if (currentPage === 'dashboard') {
-  //     return (
-  //       <>
-  //     <Dashboard user={user} />
-  //     </>
-  //   )
-  // }
-
-  //   if (currentPage === registration) {
-  //     return (
-  //       <>
-  //       <Register setRegistrationPage={setRegistrationPage}/> 
-  //       </>
-  //     )
-  //   }
-  // }
-
-
-
-//     return (
-//       <>
-//       <div>
-//       {/* <Navbar /> */}
-//         <Header />
-//         <main>
-//           <BrowserRouter>
-//           <Routes>
-//               <Route path="/Login" element={<Login setCurrentPage={setCurrentPage} setUser={setUser} />} />
-//               <Route path="/Registration" element={<Register />} />
-//           </Routes>
-//           </BrowserRouter>
-//         </main>
-//       </div>
-//       <div className="border-line"></div>
-//       <footer className="flex justify-center" style={{marginTop: '20px'}}>Copyright 2023</footer></>   
-//   )
-// }
-
-
 export default App
-
-
-  {/* {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
-          {currentPage === 'dashboard' && <Dashboard user={user}/>}
-          {currentPage === 'register' && <Register registration={registration}/>} */}

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import TransactionHistory from './TransactionHistory';
 
 
 
 const Transaction = (props) => {
-    const { user, setCurrentPage, setUser } = props
+    const { user, setCurrentPage, setUser, transactionHistory, setTransactionHistory} = props
+    console.log(transactionHistory)
     const [depositAmount, setDepositAmount] = useState('');
     const [withdrawAmount, setWithdrawAmount] = useState('')
+
     
 
 
@@ -18,16 +21,31 @@ const Transaction = (props) => {
         const accountUpdate = storedAccounts.map((account) => {
             if (account.username === user.username) {
             const depositedAmount = parseFloat(depositAmount)
+            if (depositedAmount > 0)
             account.currentBalance += depositedAmount;
-            // if (!isNaN(depositedAmount) && depositedAmount > 0) {
-            //     // account.currentBalance += depositedAmount;
-            //   }
+            
+            
+            const newTransaction = {
+              type: 'Deposit',
+              amount: depositedAmount,
+              date: new Date().toLocaleString(),
             }
+            console.log(newTransaction)
+            setTransactionHistory([...transactionHistory, newTransaction]);
+            }
+
+
             return account;
             })
             
         localStorage.setItem('accounts', JSON.stringify(accountUpdate))
-        setUser(user)
+        setUser(storedAccounts.find((account) => {
+          if (account.username === user.username) {
+            return true
+          } else {
+            return false
+          }
+        }))
         setDepositAmount('');
         alert(`Deposit Successful Current balance: P${user.currentBalance}`)
     }
@@ -38,8 +56,16 @@ const Transaction = (props) => {
       const accountUpdate = storedAccounts.map((account) => {
           if (account.username === user.username) {
           const withdrawedAmount = parseFloat(withdrawAmount)
-          if (!isNaN(withdrawedAmount) && withdrawedAmount > 0) {
+          if (withdrawedAmount > 0) {
             account.currentBalance -= withdrawedAmount;
+
+            const newTransaction = {
+              type: 'Withdrawal',
+              amount: withdrawedAmount,
+              date: new Date().toLocaleString(),
+            };
+            setTransactionHistory([...transactionHistory, newTransaction]);
+
             alert(`Withdraw Successful Current balance: P${user.currentBalance}`)
           } else if (withdrawedAmount <= user.currentBalance){
             alert('Insufficient funds')
@@ -48,13 +74,15 @@ const Transaction = (props) => {
           })
          
       localStorage.setItem('accounts', JSON.stringify(accountUpdate))
-      setUser(user)
-      setDepositAmount('');
-
+      setUser((storedAccounts.find((account) => {
+        if (account.username === user.username) {
+          return true
+        } else {
+          return false
+        }
+      })))
+      setWithdrawAmount('');
   }
-
-
-
 
   const toDash = () => {
     setCurrentPage('dashboard')
@@ -63,7 +91,7 @@ const Transaction = (props) => {
   return (
     <div style={{display:'flex', flexDirection:'column'}} className='flex justify-center items-center'>
         <form type="submit" onSubmit={depositBtn}>
-            <p>P{user.currentBalance.toFixed(2)}</p>
+            <p>P{user.currentBalance}</p>
             <input type="number" placeholder="Enter Amount" value={depositAmount} onChange={onSetDepositAmount}/>
             <button>Deposit</button>
       </form>

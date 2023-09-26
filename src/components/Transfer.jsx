@@ -4,7 +4,7 @@ import { useState } from "react";
 
 
 const Transfer = (props) => {
-    const { user, setCurrentPage, setUser } = props;
+    const { user, setCurrentPage, setUser, transactionHistory, setTransactionHistory } = props;
     const [transferAmount, setTransferAmount] = useState('');
     const [receiverUsername, setReceiverUsername] = useState('');
 
@@ -37,7 +37,16 @@ const Transfer = (props) => {
         } else {
           alert('Invalid transfer amount or insufficient funds.');
         }
-      };
+
+
+        const transferTransaction = {
+          type: 'Transfer',
+          amount: parseFloat(transferAmount),
+          date: new Date().toLocaleString(),
+        }
+
+        setTransactionHistory([...transactionHistory, transferTransaction]);
+      }
 
     const dashboardBtn = () => {
     setCurrentPage('dashboard');
