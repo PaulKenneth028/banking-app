@@ -16,7 +16,7 @@ const Register = (props) => {
     const [errorUser, setErrorUser] = useState('')
     const [currentBalance, setCurrentBalance] = useState(5000)
     const [totalSavings, setTotalSavings] = useState(1000)
-    
+    const [transactionHistory, setTransactionHistory] = useState([])
 
     const onSetNameUser = (e) => setNameUser(e.target.value)
     const onSetAccountNumber = (e) => setAccountNumber(e.target.value)
@@ -43,6 +43,7 @@ const Register = (props) => {
             accountNumber,
             currentBalance,
             totalSavings,
+            transactionHistory,
         }
         localStorage.setItem('accounts', JSON.stringify([
             ...existingAccounts, 

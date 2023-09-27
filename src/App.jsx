@@ -30,9 +30,7 @@ function App() {
     
     const [currentPage, setCurrentPage] = useState ('signin')
     const [user, setUser] = useState(null)
-    const [transactionHistory, setTransactionHistory] = useState([]);
-
-    console.log(transactionHistory)
+    // const [transactionHistory, setTransactionHistory] = useState([])
 
         return (
       <>
@@ -42,12 +40,10 @@ function App() {
         {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
           {currentPage === 'dashboard' && <Dashboard user={user} setCurrentPage={setCurrentPage}/>}
           {currentPage === 'Register' && <Register setCurrentPage={setCurrentPage}/>}
-          {currentPage === 'transaction' && <Transaction user={user} setUser={setUser} setCurrentPage={setCurrentPage} transactionHistory={transactionHistory} 
-          setTransactionHistory={setTransactionHistory}/>}
-          {currentPage === 'transfer' && <Transfer user={user} setCurrentPage={setCurrentPage} setUser={setUser}  transactionHistory={transactionHistory}
-          setTransactionHistory={setTransactionHistory}/>}
+          {currentPage === 'transaction' && <Transaction user={user} setUser={setUser} setCurrentPage={setCurrentPage} />}
+          {currentPage === 'transfer' && <Transfer user={user} setCurrentPage={setCurrentPage} setUser={setUser} />}
           {currentPage === 'linkedcards' && <LinkedCards user={user} setCurrentPage={setCurrentPage} />}
-          {currentPage === "history" && <TransactionHistory transactionHistory={transactionHistory} setCurrentPage={setCurrentPage} setTransactionHistory={setTransactionHistory}/>}
+          {currentPage === "history" && <TransactionHistory user={user} setUser={setUser} setCurrentPage={setCurrentPage} />}
         </main>
       </div>
       <div className="border-line"></div>

@@ -1,6 +1,10 @@
 import React from "react";
 
-const TransactionHistory = ({ transactionHistory }) => {
+const TransactionHistory = (props) => {
+  const { user, setCurrentPage } = props
+    const toDash = () => {
+      setCurrentPage('dashboard')
+    }
   return (
     <div>
       <h2>Transaction History</h2>
@@ -13,7 +17,7 @@ const TransactionHistory = ({ transactionHistory }) => {
           </tr>
         </thead>
         <tbody>
-          {transactionHistory.map((transaction, index) => (
+          {user.transactionHistory.map((transaction, index) => (
             <tr key={index}>
               <td>{transaction.date}</td>
               <td>{transaction.type}</td>
@@ -22,6 +26,7 @@ const TransactionHistory = ({ transactionHistory }) => {
           ))}
         </tbody>
       </table>
+      <div onClick={toDash}>toDash</div>
     </div>
   );
 };

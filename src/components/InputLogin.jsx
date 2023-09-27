@@ -1,7 +1,7 @@
 
 
 const Input = (props) => {
-    const { label, type, id, value, onChange, required,} = props;
+    const { label, type, id, value, onChange, required, placeholder} = props;
 
     return (
         <>
@@ -14,6 +14,7 @@ const Input = (props) => {
                 onChange={onChange}
                 value={value}
                 required={required}
+                placeholder={placeholder}
             />
         </>
     )
