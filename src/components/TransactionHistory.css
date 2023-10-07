@@ -1,0 +1,28 @@
+.transactionHeader {
+    justify-content: center;
+}
+table {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.tableHead {
+    width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 20px;
+}
+
+td {
+    border: 1px solid black;
+    width: 1000px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.tableheader {
+    display: flex;
+    justify-content: space-around;
+    width: 1000px;
+}

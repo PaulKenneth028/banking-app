@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Input from "./InputLogin"
 import { useNavigate } from "react-router-dom"
 import './Registration.css'
+import Swal from "sweetalert2"
 
 const Register = (props) => {
 
@@ -17,6 +18,7 @@ const Register = (props) => {
     const [currentBalance, setCurrentBalance] = useState(5000)
     const [totalSavings, setTotalSavings] = useState(1000)
     const [transactionHistory, setTransactionHistory] = useState([])
+    const [budgetTracker, setBudgetTracker] = useState ([])
 
     const onSetNameUser = (e) => setNameUser(e.target.value)
     const onSetAccountNumber = (e) => setAccountNumber(e.target.value)
@@ -44,12 +46,22 @@ const Register = (props) => {
             currentBalance,
             totalSavings,
             transactionHistory,
+            budgetTracker
         }
         localStorage.setItem('accounts', JSON.stringify([
             ...existingAccounts, 
             newAccount,
         ]))
         setCurrentPage('signin')
+        Swal.fire({
+            title: 'Registered Succesfully',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
      }
      else if (password !== confirmPassword) {
         setErrorConfirmPassword('Password and confirm password do not match')

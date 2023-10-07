@@ -1,56 +1,73 @@
-import React, { useState } from "react"; // Import useState from React
+import React, { useState } from "react";
 import Dashboard from "./Dashboard";
+import Swal from "sweetalert2";
 
 const Transfer = (props) => {
-  const { user, setCurrentPage, setUser } = props; // Remove unnecessary props
-  const [transferAmount, setTransferAmount] = useState('');
-  const [receiverUsername, setReceiverUsername] = useState('');
+  const { user, setCurrentPage, setUser } = props; 
+  const [transferAmount, setTransferAmount] = useState('')
+  const [receiverUsername, setReceiverUsername] = useState('')
 
-  const onSetTransferAmount = (e) => setTransferAmount(e.target.value);
-  const onSetReceiverUsername = (e) => setReceiverUsername(e.target.value);
+  const onSetTransferAmount = (e) => setTransferAmount(e.target.value)
+  const onSetReceiverUsername = (e) => setReceiverUsername(e.target.value)
 
   const transferBtn = (e) => {
-    e.preventDefault();
-    let newAccountsDetails = {};
+    e.preventDefault()
+    let newAccountsDetails = {}
     const storedAccounts = JSON.parse(localStorage.getItem('accounts')) || [];
-    const senderAccount = storedAccounts.find((account) => account.accountNumber === user.accountNumber); 
-    const receiverAccount = storedAccounts.find((account) => account.accountNumber === receiverUsername);
+    const senderAccount = storedAccounts.find((account) => account.accountNumber === user.accountNumber)
+    const receiverAccount = storedAccounts.find((account) => account.accountNumber === receiverUsername)
     
     if (!receiverAccount) {
-      alert('Receiver account not found.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Receiver account not found.',
+        footer: 'Kiss mo TEWP ko'
+      })
       return;
     }
 
-    const amountToTransfer = parseFloat(transferAmount);
+    const amountToTransfer = parseFloat(transferAmount)
 
     if (!isNaN(amountToTransfer) && amountToTransfer > 0 && senderAccount.currentBalance >= amountToTransfer) {
-      senderAccount.currentBalance -= amountToTransfer;
-      receiverAccount.currentBalance += amountToTransfer;
+      senderAccount.currentBalance -= amountToTransfer
+      receiverAccount.currentBalance += amountToTransfer
 
       const newTransaction = {
-        type: 'Transfer', 
+        type: 'Money transfer', 
         amount: amountToTransfer, 
         date: new Date().toLocaleString(),
-      };
+      }
 
-    
-      senderAccount.transactionHistory.push(newTransaction);
       receiverAccount.transactionHistory.push(newTransaction);
 
-      newAccountsDetails = { ...senderAccount, transactionHistory: [...senderAccount.transactionHistory, newTransaction] };
+      newAccountsDetails = { ...senderAccount, transactionHistory: [...senderAccount.transactionHistory, newTransaction] }
 
-      localStorage.setItem('accounts', JSON.stringify(storedAccounts));
-      setUser(newAccountsDetails);
-      setTransferAmount('');
-      setReceiverUsername('');
-      alert(`Transfer Successful. Current balance: P${senderAccount.currentBalance}`);
+      localStorage.setItem('accounts', JSON.stringify(storedAccounts))
+      setUser(newAccountsDetails)
+      setTransferAmount('')
+      setReceiverUsername('')
+      Swal.fire({
+        title: `Transfer Successful. Current balance: P${senderAccount.currentBalance}`,
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
     } else {
-      alert('Invalid transfer amount or insufficient funds.');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Invalid transfer amount or insufficient funds.',
+        footer: 'Check what you need to check'
+      })
     }
-  };
+  }
 
   const dashboardBtn = () => {
-    setCurrentPage('dashboard');
+    setCurrentPage('dashboard')
   };
 
   return (
