@@ -11,7 +11,6 @@ const BudgetTracker = (props) => {
   // }, [expenses])
 
   const updateUserAccount = (expenses) => {
-    console.log('expenses', expenses)
     const updatedUser = {
       ...user,
       budgetTracker: expenses, 
@@ -24,8 +23,6 @@ const BudgetTracker = (props) => {
       return account;
     });
     localStorage.setItem("accounts", JSON.stringify(updatedAccounts))
-    console.log('updatedAccounts', updatedAccounts)
-    // console.log('updatedUser', updatedUser)
   };
 
   const handleAddExpense = () => {
