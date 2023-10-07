@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TransactionHistory from './TransactionHistory';
 import Input from './InputLogin';
+import Swal from 'sweetalert2';
 
 
 
@@ -33,8 +34,6 @@ const Transaction = (props) => {
             }
             account.transactionHistory.push(newTransaction)
             newAccountsDetails = {...account, transactionHistory:[...account.transactionHistory]}
-            console.log('new account details', newAccountsDetails)
-            
             }
             return account;
             })
@@ -42,7 +41,15 @@ const Transaction = (props) => {
         localStorage.setItem('accounts', JSON.stringify(accountUpdate))
         setUser(newAccountsDetails)
         setDepositAmount('')
-        alert(`Deposit Successful Current balance: P${newAccountsDetails.currentBalance}`)
+        Swal.fire({
+          title: `Deposit Successful. Current balance: P${newAccountsDetails.currentBalance}`,
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })
       }
 
       const withdrawBtn = (e) => {
@@ -72,13 +79,18 @@ const Transaction = (props) => {
                 localStorage.setItem('accounts', JSON.stringify(storedAccounts))
                 setUser(newAccountsDetails)
                 setWithdrawAmount('')
-                alert(`Withdraw Successful. Current balance: P${newAccountsDetails.currentBalance}`)
+                Swal.fire(
+                  `Withdraw Successful. Current balance: P${newAccountsDetails.currentBalance}`
+                )
               } else {
-                alert('Insufficient funds');
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Insufficient funds',
+                  footer: 'Check your balance'
+                })
               }
-            } else {
-              alert('Invalid withdrawal amount');
-            }
+            } 
           }
           return account;
         })

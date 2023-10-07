@@ -20,9 +20,6 @@ const Login = (props) => {
      const [message, setMessage] = useState('');
      const [loginAttempts, setLoginAttempts] = useState(0);
 
-    //  const onusernameChange = (e) => setLoginUser(e.target.value)
-    //  const onpasswordChange = (e) => setLoginUser (e.target.value)
-
      const onChange = (e) => {
         const { name, value } = e.target;
         setLoginUser({

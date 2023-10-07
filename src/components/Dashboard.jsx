@@ -2,6 +2,7 @@ import './Dashboard.css'
 import { useEffect, useState } from "react"
 import Transaction from './Transaction'
 import Transfer from './Transfer'
+import BudgetTracker from './BudgetTracker'
 
 
 const Dashboard = (props) => {
@@ -32,8 +33,8 @@ const Dashboard = (props) => {
         setCurrentPage('transfer')
     })
 
-    const linkedCardsBtn = (() => {
-        setCurrentPage('linkedcards')
+    const BudgetTracker = (() => {
+        setCurrentPage('budgetTracker')
     }) 
 
     const logOutBtn = (() => {
@@ -69,8 +70,8 @@ const Dashboard = (props) => {
                 <button className="btn" onClick={transactionbtn} style={{ display:'flex', alignItems:'center', width: '120%', marginBottom: '30px'}}> 
                 <img src="src/components/Images/transaction.png" alt="Image logo" style={{width:'50px', display:'flex', alignItems:'center'}}/>Transactions</button>
                 
-                <button className="btn" onClick={linkedCardsBtn}style={{ display:'flex', alignItems:'center', width: '120%', marginBottom: '30px'}}>
-                <img src="src/components/Images/—Pngtree—bank card_1241597(1).png" alt="Image logo" style={{width:'50px', display:'flex', alignItems:'center'}}/>Linked Cards</button>
+                <button className="btn" onClick={BudgetTracker}style={{ display:'flex', alignItems:'center', width: '120%', marginBottom: '30px'}}>
+                <img src="src/components/Images/—Pngtree—bank card_1241597(1).png" alt="Image logo" style={{width:'50px', display:'flex', alignItems:'center'}}/>Budget Tracker</button>
 
                 <button className="btn" onClick={logOutBtn}>Logout</button> 
                 

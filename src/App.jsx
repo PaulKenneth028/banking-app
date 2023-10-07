@@ -6,9 +6,10 @@ import Dashboard from "./components/Dashboard"
 import Navbar from "./components/Navbar"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Transfer from "./components/Transfer"
-import LinkedCards from "./components/LinkedCards"
 import Transaction from './components/Transaction'
+import BudgetTracker from "./components/BudgetTracker"
 import TransactionHistory from "./components/TransactionHistory"
+
 
 function App() {
 
@@ -30,19 +31,19 @@ function App() {
     
     const [currentPage, setCurrentPage] = useState ('signin')
     const [user, setUser] = useState(null)
-    // const [transactionHistory, setTransactionHistory] = useState([])
+    const [expense, setexpense] = useState([])
 
         return (
       <>
       <div>
       <Navbar />
         <main>
-        {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
+          {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
           {currentPage === 'dashboard' && <Dashboard user={user} setCurrentPage={setCurrentPage}/>}
           {currentPage === 'Register' && <Register setCurrentPage={setCurrentPage}/>}
           {currentPage === 'transaction' && <Transaction user={user} setUser={setUser} setCurrentPage={setCurrentPage} />}
           {currentPage === 'transfer' && <Transfer user={user} setCurrentPage={setCurrentPage} setUser={setUser} />}
-          {currentPage === 'linkedcards' && <LinkedCards user={user} setCurrentPage={setCurrentPage} />}
+          {currentPage === 'budgetTracker' && <BudgetTracker user={user} setUser={setUser} setCurrentPage={setCurrentPage}/>}
           {currentPage === "history" && <TransactionHistory user={user} setUser={setUser} setCurrentPage={setCurrentPage} />}
         </main>
       </div>
