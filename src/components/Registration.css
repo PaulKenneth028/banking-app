@@ -2,7 +2,33 @@ input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button{
     -webkit-appearance: none;
 }
-
 input[type='number']{
     -moz-appearance:textfield;
-  }
+}
+
+.registrationForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+    width: 300px;
+    margin-top: 10px;
+    border: 2px solid black;
+
+}
+
+.loginHere {
+    display: flex;
+    justify-content: center;
+}
+
+#imgLogo {
+    width: 200px;
+}
+
+.logoDiv {
+    display: flex;
+    justify-content: center;
+}
+  

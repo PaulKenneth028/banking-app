@@ -102,7 +102,7 @@ const Transaction = (props) => {
   }
 
   return (
-    <div style={{display:'flex', flexDirection:'column'}} className='flex justify-center items-center'>
+    <div>
         <form type="submit" onSubmit={depositBtn}>
             <p>P{user.currentBalance}</p>
             <Input type='number' placeholder="Enter Amount" value={depositAmount} onChange={onSetDepositAmount}/>

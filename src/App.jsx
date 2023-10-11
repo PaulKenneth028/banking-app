@@ -3,12 +3,13 @@ import Register from "./components/Registration"
 import { useEffect, useState } from "react"
 import Login from "./components/Login"
 import Dashboard from "./components/Dashboard"
-import Navbar from "./components/Navbar"
+// import Navbar from "./components/Navbar"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Transfer from "./components/Transfer"
 import Transaction from './components/Transaction'
 import BudgetTracker from "./components/BudgetTracker"
 import TransactionHistory from "./components/TransactionHistory"
+import Home from "./components/Home"
 
 
 function App() {
@@ -29,15 +30,15 @@ function App() {
     //   localStorage.setItem('accounts', JSON.stringify(accounts))
     // }, [])
     
-    const [currentPage, setCurrentPage] = useState ('signin')
+    const [currentPage, setCurrentPage] = useState ('Home')
     const [user, setUser] = useState(null)
     const [expense, setexpense] = useState([])
 
         return (
       <>
       <div>
-      <Navbar />
         <main>
+          {currentPage === 'Home' && <Home setCurrentPage={setCurrentPage} setUser={setUser} />}
           {currentPage === 'signin' && <Login setCurrentPage={setCurrentPage} setUser={setUser} />}
           {currentPage === 'dashboard' && <Dashboard user={user} setCurrentPage={setCurrentPage}/>}
           {currentPage === 'Register' && <Register setCurrentPage={setCurrentPage}/>}

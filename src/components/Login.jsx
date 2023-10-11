@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Input from "./InputLogin"
 import { redirect, useNavigate } from "react-router-dom"
+import './login.css'
 
 
 
@@ -41,13 +42,13 @@ const Login = (props) => {
             return account.username === loginUser.username 
         })
         if (!account) {
-           setErrorUser ('Username does not exist')
            return
         }
         
         if (account.password !== loginUser.password) {
             setLoginAttempts(loginAttempts + 1)
             setPassError ('Username and Password does not match')
+            // setPassError('')
             return
         }
 
@@ -72,21 +73,21 @@ const Login = (props) => {
         setCurrentPage('dashboard')
         }
 
+    
+        useEffect(() => {
+        
+            setErrorUser('');
+            setPassError('');
+          }, []);
   
     const onClick = () => {
       setCurrentPage('Register')
     }
 
-    useEffect(() => {
-        
-        setErrorUser('');
-        setPassError('');
-      }, []);
-
     return (
         
-     <section className="flex flex-col justify-center items-center mt-[100px]">
-        <form onSubmit={onSubmit} className="flex flex-col justify-center border-2 p-5 w-[20%] ">
+     <section className="loginForm">
+        <form onSubmit={onSubmit}>
             <label>Username:</label>
             <input 
             type="text" 
@@ -94,7 +95,6 @@ const Login = (props) => {
             value={loginUser.username}
             onChange={onChange}
             />
-            {userError && (<small>{userError}</small>)}
             <label>Password:</label>
             <input
                 type="password" 
@@ -104,8 +104,7 @@ const Login = (props) => {
                 required
             />
             {passError && (<small >{passError}</small>)}
-            <button id="button1" type="submit" style={{backgroundColor: "white", 
-            marginTop: "10px", width: "50px", fontSize: "13px", borderRadius: "50%"}}>Sign-in</button>
+            <button id="button1" type="submit">Sign-in</button>
             {message && <p>{message}</p>}
         </form>
             <button onClick={onClick}> No account yet? Signup here!</button>

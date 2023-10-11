@@ -1,0 +1,62 @@
+.homeUI {
+    background-image: url(src/components/Images/istockphoto-1279177549-612x612.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 650px;
+}
+#homeLogo {
+    width: 200px;
+    margin-right: 100px;
+    height: 100px;
+}
+
+.navBar {
+    display: flex;
+    width: 500px;
+    justify-content: space-around;
+}
+
+.navContainer {
+ display: flex;
+ justify-content: space-between;
+ padding: 30px;
+ align-items: center;
+}
+
+#loginBtn {
+    border: 1px solid black;
+    width: 200px;
+    border-radius: 100px;
+    background-color: pink;
+    height: 30px;
+}
+
+#signUpBtn {
+    border: 1px solid black;
+    width: 200px;
+    border-radius: 100px;
+    background-color: pink;
+    height: 30px;
+}
+.bankappfeat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 1000px;
+}
+.bankappfeatures {
+    display: flex;
+    justify-content: flex-end;
+    height: 300px;
+}
+
+.features {
+    font-size: 20px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+
+
+

@@ -1,32 +1,6 @@
 body{
-  background-color: skyblue;
+  background-color: lightblue;
 }
-.navContainer ul {
-  display: flex;
-  justify-content: flex-start;
-  margin-right: 60px;
-  align-items: center;
-}
-#headerLogo {
-  display: flex;
-  align-items: center;
-}
-#imgLogo {
-  border: 1px solid black;
-  height: 50px;
-  width: 100px;
-}
-.navContainer li {
-  padding: 20px;
-}
-input {
-  display: flex;
-  justify-content: center;
-}
-button {
-  cursor: pointer;
-}
-
 
 @tailwind base;
 @tailwind components;

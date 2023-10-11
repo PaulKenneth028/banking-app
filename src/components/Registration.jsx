@@ -74,8 +74,9 @@ const Register = (props) => {
 
     return ( 
         <>
-        <div className="flex justify-center items-center mt-[100px]">
-            <form onSubmit={onSubmit} className="flex justify-center flex-col items-center w-[500px] border-2">
+        <div className="logoDiv"><img src="src/components/Images/background-logo.png" alt="imgLogo" id="imgLogo"/></div>
+        <div style={{display:"flex", justifyContent:"center"}}>
+            <form onSubmit={onSubmit} className="registrationForm">
 
                 <Input
                     label='Username'
@@ -122,7 +123,7 @@ const Register = (props) => {
                 <button type="submit">Submit</button>
             </form>
         </div>
-        <div className="flex justify-center mt-10"><button onClick={onClick} style={{fontFamily: 'cursive'}}> Do you have an account? Login here!</button></div></>
+        <div className="loginHere"><button onClick={onClick}> Do you have an account? Login here!</button></div></>
     ) 
 }
 

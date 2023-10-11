@@ -6,9 +6,9 @@ const BudgetTracker = (props) => {
   const [expenseName, setExpenseName] = useState("")
   const [expenseAmount, setExpenseAmount] = useState("")
 
-  // useEffect(() => {
-  //   updateUserAccount
-  // }, [expenses])
+  useEffect(() => {
+    updateUserAccount
+  }, [expenses])
 
   const updateUserAccount = (expenses) => {
     const updatedUser = {
