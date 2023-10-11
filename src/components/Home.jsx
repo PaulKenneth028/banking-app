@@ -26,7 +26,7 @@ const Home = (props) => {
             <button>Contact</button>
             <button>Updates</button>   
         </div>
-         <div> 
+         <div className='loginsignupbtn'> 
             <button id='loginBtn' onClick={logInBtn}>Login</button>
             <button id='signUpBtn' onClick={signUpBtn}>Signup</button>
         </div>   
