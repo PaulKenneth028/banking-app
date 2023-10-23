@@ -1,0 +1,70 @@
+
+
+
+.flex-container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+  
+
+.title {
+    font-size: 24px;
+    width: 300px;
+}
+  
+
+.category-select {
+    margin: 10px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+  
+
+.expense-item {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 300px;
+}
+  
+
+.edit-input {
+    margin: 10px;
+    width: 300px;
+}
+  
+
+.add-button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 300px;
+}
+  
+
+.total-expenses {
+    font-weight: bold;
+    width: 300px;
+}
+  
+
+.dashboard-button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 300px;
+}
+  

@@ -35,7 +35,10 @@ const Dashboard = (props) => {
 
     const BudgetTracker = (() => {
         setCurrentPage('budgetTracker')
+        let budgetTrack = JSON.parse(localStorage.getItem("accounts"))
+        console.log(budgetTrack)
     }) 
+   
 
     const logOutBtn = (() => {
         setCurrentPage('signin')
