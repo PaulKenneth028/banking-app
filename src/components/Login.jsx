@@ -2,8 +2,7 @@ import { useState, useEffect } from "react"
 import Input from "./InputLogin"
 import { redirect, useNavigate } from "react-router-dom"
 import './login.css'
-
-
+import Headers from "./Header"
 
 
 const Login = (props) => {
@@ -86,29 +85,33 @@ const Login = (props) => {
 
     return (
         
-     <section className="loginForm">
-        <form onSubmit={onSubmit}>
-            <label>Username:</label>
-            <input 
-            type="text" 
-            name='username'
-            value={loginUser.username}
-            onChange={onChange}
-            />
-            <label>Password:</label>
-            <input
-                type="password" 
-                name='password'
-                value={loginUser.password}
-                onChange={onChange}
-                required
-            />
-            {passError && (<small >{passError}</small>)}
-            <button id="button1" type="submit">Sign-in</button>
-            {message && <p>{message}</p>}
-        </form>
-            <button onClick={onClick}> No account yet? Signup here!</button>
-     </section>
+        <><Headers />
+        <section className="loginForm">
+            <form onSubmit={onSubmit} className="form1">
+                <label>Username:</label>
+                <input
+                    className="loginInfo"
+                    type="username"
+                    name='username'
+                    value={loginUser.username}
+                    onChange={onChange} />
+                <label>Password:</label>
+                <input
+                    className="loginInfo"
+                    type="password"
+                    name='password'
+                    value={loginUser.password}
+                    onChange={onChange}
+                    required />
+                {passError && (<small>{passError}</small>)}
+                <button id="button1" type="submit">Sign-in</button>
+                {message && <p>{message}</p>}
+                <button onClick={onClick} className="signUpButton"> No account yet? Signup here!</button>
+            </form>
+        </section>
+        <div style={{height: '200px'}}>   
+        </div>
+        <footer className="flex justify-center" style={{marginTop: '20px'}}>Copyright 2023</footer></>
     )
 }
 

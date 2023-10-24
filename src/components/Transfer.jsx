@@ -15,16 +15,20 @@ const Transfer = (props) => {
     let newAccountsDetails = {}
     const storedAccounts = JSON.parse(localStorage.getItem('accounts')) || [];
     const senderAccount = storedAccounts.find((account) => account.accountNumber === user.accountNumber)
-    const receiverAccount = storedAccounts.find((account) => account.accountNumber === receiverUsername)
+    const receiverAccount = storedAccounts.find((account) => account.accountNumber === receiverUsername);
     
     if (!receiverAccount) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Receiver account not found.',
-        footer: 'Kiss mo TEWP ko'
+        footer: 'Check mo naaaaa'
       })
       return;
+    }
+
+    if (!receiverAccount.transactionHistory) {
+      receiverAccount.transactionHistory = [];
     }
 
     const amountToTransfer = parseFloat(transferAmount)
@@ -42,8 +46,10 @@ const Transfer = (props) => {
       receiverAccount.transactionHistory.push(newTransaction);
 
       newAccountsDetails = { ...senderAccount, transactionHistory: [...senderAccount.transactionHistory, newTransaction] }
-
-      localStorage.setItem('accounts', JSON.stringify(storedAccounts))
+      const updatedAccounts = storedAccounts.map((account) =>
+      account.accountNumber === user.accountNumber ? senderAccount : account
+    );
+      localStorage.setItem('accounts', JSON.stringify(updatedAccounts))
       setUser(newAccountsDetails)
       setTransferAmount('')
       setReceiverUsername('')
