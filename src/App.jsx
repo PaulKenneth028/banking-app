@@ -49,7 +49,7 @@ function App() {
         </main>
       </div>
       <div className="border-line"></div>
-      <footer className="flex justify-center" style={{marginTop: '20px'}}>Copyright 2023</footer></>   
+      </>   
   )
 }
 

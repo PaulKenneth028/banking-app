@@ -1,128 +1,160 @@
-.dashboard {
-     display: grid;
-     justify-content: center;
-     align-items: center;
-     grid-template-columns: 200px 200px 200px 200px 150px 450px ; 
-     grid-template-rows: 100px 100px 100px 5px 80px 5px;
-     grid-template-areas: 
-     "menu username ...  ... ... ..."
-     "menu balance ...  totalsavings ... ..."
-     "menu addmoneyBtn ... sendmoney ... history"
-     "... inputfield inputfield addcard ... ..."
-     "... withdrawBtn ... ... ... ..."
-     "... inputfieldWdraw ... ... ... ..."
-     ;
-     border: 3px solid;
-     max-width: 100%;
-     padding: 20px;
-}
 
-.transHistory {
-    grid-area: history;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  } 
+  
+  .dashboard {
     border: 1px solid black;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    padding: 20px;
-    border-radius: 30%;
-    align-items: center;
-}
-
-#balanceAmount {
-    display: flex;
-    justify-content: center;
-}
-
-.currentBalance {
-    grid-area: balance;
-    font-family: sans-serif;
-    font-size: 30px;
-    width: 300px;
-    background-color: lightgray;
+    border-radius: 30px;
+    width: 1500px;
     display: grid;
     justify-content: center;
-    
+    padding: 60px;
+    grid-template-columns: repeat(4, 10fr);
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    grid-template-areas: 
+    " ... ... ... timeAndDate"
+    " sidebar username history history"
+    " sidebar currentbalance savings addCard"
+    " sidebar addMoney withdrawMoney sendMoney"
+  }
+
+.timeDate {
+    grid-area: timeAndDate;
+    border: 1px solid black;
 }
+
+
+.Headers {
+    background-color: #003366;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  .userName {
+    font-size: 24px;
+    color: #003366;
+    margin-bottom: 20px;
+    grid-area: username;
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .currentBalance {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 25px;
+    grid-area: currentbalance;
+  }
 
 .totalSavings {
-    grid-area: totalsavings;
-    font-family: sans-serif;
-     font-size: 30px;
-     width: 300px;
-     background-color: lightgray;
-     display: grid;
-    justify-content: center;
-}
-
-
-.userName {
-    margin-top: 30px;
-     grid-area: username;
-     font-family: sans-serif;
-     font-size: 30px;
-     width: 500px;
-}
-
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 25px;
+    grid-area: savings;
+} 
 .addMoneyBtn {
-    grid-area: addmoneyBtn;
-    background-color: white;
-    margin-left: 80px;
-    width: 150px;
-}
-
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #003366;
+    color: #fff;
+    cursor: pointer;
+    grid-area: addMoney;
+} 
 .withdrawBtn {
-    grid-area: withdrawBtn;
-    background-color: white;
-    margin-left: 80px;
-    width: 150px;
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #003366;
+    color: #fff;
+    cursor: pointer;
+    grid-area: withdrawMoney;
 }
-
+.transHistory {
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #003366;
+    color: #fff;
+    cursor: pointer;
+    grid-area: history;
+}
 .sendMoney {
-    grid-area: sendmoney;
-    background-color: white;
-    margin-left: 80px;
-    width: 150px;
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #003366;
+    color: #fff;
+    cursor: pointer;
+    grid-area: sendMoney;
 }
-
 .addCard {
-    grid-area: addcard;
-    background-color: white;
-    margin-left: 80px;
-    width: 150px;
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #003366;
+    color: #fff;
+    cursor: pointer;
+    grid-area: addCard;
+}
+  
+.addMoneyBtn:hover, .withdrawBtn:hover, .transHistory:hover, .sendMoney:hover, .addCard:hover {
+    background-color: #001f4d;
 }
 
-.menuBtn {
+.sideBarBtn {
     display: flex;
-    grid-area: menu;
+    width: 300px;
     flex-direction: column;
-    font-size:20px;
-    height: 100%;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 50px;
-    margin-top: 60px;
-   
+    grid-area: sidebar;
+    justify-content: space-around;
 }
-
-.btn:hover{
-    transform: scale(1.3);
-    z-index: 2;
-    
+  
+.btn {
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
 }
-
-.inputData {
-    grid-area: inputfield;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    margin-right: 100px;
+  
+.btn:hover {
+    background-color: #001f4d;
 }
-
-.inputDataWdraw{
-    grid-area: inputfieldWdraw;
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    margin-left: 105px;
-}
+  

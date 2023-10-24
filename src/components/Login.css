@@ -1,3 +1,41 @@
+
+
 .loginForm {
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+.form1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    height: 300px;
+    font-size: 20px;
+}
+
+.loginInfo {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px; 
+    width: 500px;
+}
+
+.signUpButton {
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+footer {
+    background-color: #003366;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
