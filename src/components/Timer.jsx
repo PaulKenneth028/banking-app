@@ -8,9 +8,9 @@ function TimeandDate() {
       setCurrentDateTime(new Date());
     };
 
-    const intervalId = setInterval(updateDateTime, 1000); // Update every second
+    const intervalId = setInterval(updateDateTime, 1000); 
 
-    return () => clearInterval(intervalId); // Clean up the interval on unmount
+    return () => clearInterval(intervalId); 
   }, []);
 
   const formattedTime = currentDateTime.toLocaleTimeString();

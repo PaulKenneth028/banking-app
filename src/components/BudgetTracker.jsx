@@ -12,7 +12,6 @@ const BudgetTracker = (props) => {
   const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
-    // Load data from local storage when the component mounts
     const storedAccounts = JSON.parse(localStorage.getItem("accounts"));
     if (storedAccounts) {
       const currentUser = storedAccounts.find((account) => account.username === user.username);

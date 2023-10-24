@@ -9,7 +9,7 @@ const Home = (props) => {
         e.preventDefault()
         setCurrentPage('signin')
     }
-    
+
     const signUpBtn = () => {
         setCurrentPage('Register')
     }

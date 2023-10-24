@@ -4,7 +4,6 @@ import { redirect, useNavigate } from "react-router-dom"
 import './login.css'
 import Headers from "./Header"
 
-
 const Login = (props) => {
 
     const { setCurrentPage, setUser } = props

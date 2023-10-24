@@ -9,7 +9,6 @@ const TransactionHistory = (props) => {
       setCurrentPage('dashboard')
     }
 
-
   return (
     <div>
       <h1 className="transactionHeader">Transaction History</h1>
