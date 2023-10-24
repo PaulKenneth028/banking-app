@@ -12,7 +12,6 @@ function TimeandDate() {
 
     return () => clearInterval(intervalId);
   }, []);
-
   const formattedTime = currentDateTime.toLocaleTimeString();
   const formattedDate = currentDateTime.toLocaleDateString();
 
