@@ -1,31 +1,29 @@
 
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  } 
+} 
   .dashboard {
     border: 1px solid black;
     border-radius: 30px;
     width: 1500px;
     display: grid;
     justify-content: center;
-    padding: 60px;
-    grid-template-columns: repeat(4, 10fr);
+    grid-template-columns: repeat(3.5, 10fr);
     grid-template-rows: auto;
-    grid-gap: 10px;
+    grid-gap: 5px;
     grid-template-areas: 
     " ... ... ... timeAndDate"
-    " sidebar username history history"
-    " sidebar currentbalance savings addCard"
+    " sidebar username currentbalance savings"
+    " sidebar history history addCard"
     " sidebar addMoney withdrawMoney sendMoney"
-  }
+}
 
 .timeDate {
     grid-area: timeAndDate;
     border: 1px solid black;
 }
-
 
 .Headers {
     background-color: #003366;
@@ -35,16 +33,26 @@
     font-size: 24px;
   }
   
-  .userName {
-    font-size: 24px;
-    color: #003366;
+.userAccount {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.userName {
+    background-image: url();
+    padding: 20px;
+    margin: 10px;
     margin-bottom: 20px;
     grid-area: username;
     text-align: center;
-    font-size: 30px;
-  }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 27px;
+    border: 1px solid black;
+}
   
-  .currentBalance {
+.currentBalance {
     background-color: #fff;
     padding: 20px;
     margin: 10px;
@@ -53,7 +61,7 @@
     text-align: center;
     font-size: 25px;
     grid-area: currentbalance;
-  }
+}
 
 .totalSavings {
     background-color: #fff;
@@ -77,17 +85,18 @@
     color: #fff;
     cursor: pointer;
     grid-area: addMoney;
+    height: 50px;
 } 
-.withdrawBtn {
+.withdrawMoney {
     background-color: #003366;
     color: #fff;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
     margin: 5px;
     cursor: pointer;
     background-color: #003366;
     color: #fff;
+    height: 50px;
     cursor: pointer;
     grid-area: withdrawMoney;
 }
@@ -109,6 +118,7 @@
     color: #fff;
     padding: 10px 20px;
     border: none;
+    height: 50px;
     border-radius: 5px;
     margin: 5px;
     cursor: pointer;
@@ -140,7 +150,8 @@
     width: 300px;
     flex-direction: column;
     grid-area: sidebar;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    border-right: 1px solid black;
 }
   
 .btn {

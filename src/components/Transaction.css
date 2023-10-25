@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  } 
+
+.bodyTransaction {
+    width: 1500px;
+    display: grid;
+    justify-content: center;
+    padding: 30px;
+    grid-template-columns: repeat(4.5, 10fr);
+    grid-template-rows: auto;
+    grid-gap: 50px;
+    grid-template-areas: 
+    " sidebar userBalance userBalance ..."
+    " sidebar depositForm withdrawForm ..."
+    " sidebar depositForm withdrawForm ..."
+    " sidebar ... ... ..."
+  }
+
+.userBalance{
+    grid-area: userBalance;
+    font-size: 30px;
+    width: 500px;
+}
+.depositForm {
+    border: 1px solid black;
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    font-size: 20px;
+    align-items: center;
+    grid-area: depositForm;
+    justify-content: center;
+}
+.depositBtn {
+    border: 1px solid black;
+    margin-top: 30px;
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 30px;
+    grid-area: depositBtn;
+}
+.withdrawForm {
+    border: 1px solid black;
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    font-size: 20px;
+    align-items: center;
+    grid-area: withdrawForm;
+}
+.withdrawBtn {
+    border: 1px solid black;
+    margin-top: 30px;
+    background-color: #003366;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 30px;
+    grid-area: withdrawBtn;
+}
+
+.sideBarBtn2 {
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    height: 500px;
+    grid-area: sidebar;
+    justify-content: space-around;
+}
+
