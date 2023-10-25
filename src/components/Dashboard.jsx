@@ -6,7 +6,6 @@ import BudgetTracker from './BudgetTracker'
 import Headers from './Header'
 import TimeandDate from './Timer'
 
-
 const Dashboard = (props) => {
     const { user, setCurrentPage } = props
     const [ addMoney, setAddMoney] = useState(false)

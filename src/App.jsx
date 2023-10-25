@@ -33,7 +33,6 @@ function App() {
     const [currentPage, setCurrentPage] = useState ('Home')
     const [user, setUser] = useState(null)
     const [expense, setexpense] = useState([])
-
         return (
       <>
       <div>

@@ -11,6 +11,7 @@ const Transaction = (props) => {
     const { user, setCurrentPage, setUser} = props
     const [depositAmount, setDepositAmount] = useState('')
     const [withdrawAmount, setWithdrawAmount] = useState('')
+
     const onSetDepositAmount = (e) => setDepositAmount(e.target.value)
     const onSetWithdrawAmount = (e) => setWithdrawAmount(e.target.value)
 
