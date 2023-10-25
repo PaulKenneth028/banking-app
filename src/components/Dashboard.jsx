@@ -40,7 +40,6 @@ const Dashboard = (props) => {
         let budgetTrack = JSON.parse(localStorage.getItem("accounts"))
         console.log(budgetTrack)
     }) 
-   
 
     const logOutBtn = (() => {
         setCurrentPage('signin')
@@ -51,9 +50,9 @@ const Dashboard = (props) => {
         
 <section className='flex justify-center'>
     <div className="dashboard">
-     <TimeandDate /> 
+     <TimeandDate />
             <h1 className="userName">Welcome {user.username}!
-            <br />Account#:{user.password}</h1>
+            <br /><span className='userAccount'>{user.accountNumber}</span></h1>
             <div className="currentBalance">
                 <label id='balanceAmount'>P{user.currentBalance.toFixed(2)}</label>
                 <p id='balanceMessage'>Total Balance</p>
@@ -64,7 +63,7 @@ const Dashboard = (props) => {
                 <p className='totalBalanceSavings'>Total Savings</p>
             </div>
            <button className="addMoneyBtn" onClick={addMoneyBtn} >Add Money</button>
-           <button className="withdrawBtn">Withdraw</button>
+           <button className="withdrawMoney">Withdraw</button>
                 <button className='transHistory' onClick={historyBtn}>Transaction History</button>
         
             <button className="sendMoney">Send Money</button>

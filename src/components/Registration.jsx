@@ -3,6 +3,7 @@ import Input from "./InputLogin"
 import { useNavigate } from "react-router-dom"
 import './Registration.css'
 import Swal from "sweetalert2"
+import Headers from "./Header"
 
 const Register = (props) => {
 
@@ -74,7 +75,7 @@ const Register = (props) => {
 
     return ( 
         <>
-        <div className="logoDiv"><img src="src/components/Images/background-logo.png" alt="imgLogo" id="imgLogo"/></div>
+        <Headers />
         <div style={{display:"flex", justifyContent:"center"}}>
             <form onSubmit={onSubmit} className="registrationForm">
 

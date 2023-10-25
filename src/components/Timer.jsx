@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Transfer'	
 
 function TimeandDate() {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());

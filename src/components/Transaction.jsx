@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import TransactionHistory from './TransactionHistory';
 import Input from './InputLogin';
 import Swal from 'sweetalert2';
+import "./Transaction.css"
+import Headers from './Header';
 
 
 
@@ -9,10 +11,6 @@ const Transaction = (props) => {
     const { user, setCurrentPage, setUser} = props
     const [depositAmount, setDepositAmount] = useState('')
     const [withdrawAmount, setWithdrawAmount] = useState('')
-
-    
-
-
     const onSetDepositAmount = (e) => setDepositAmount(e.target.value)
     const onSetWithdrawAmount = (e) => setWithdrawAmount(e.target.value)
 
@@ -101,20 +99,46 @@ const Transaction = (props) => {
     setCurrentPage('dashboard')
   }
 
+  const transactionbtn = (() => {
+    setCurrentPage('transaction')
+})
+
+const historyBtn = (() => {
+    setCurrentPage('history')
+})
+
+const transferBtn = (() => {
+    setCurrentPage('transfer')
+})
+
+const BudgetTracker = (() => {
+    setCurrentPage('budgetTracker')
+    let budgetTrack = JSON.parse(localStorage.getItem("accounts"))
+    console.log(budgetTrack)
+}) 
+
+
   return (
-    <div>
-        <form type="submit" onSubmit={depositBtn}>
-            <p>P{user.currentBalance}</p>
-            <Input type='number' placeholder="Enter Amount" value={depositAmount} onChange={onSetDepositAmount}/>
-            <button>Deposit</button>
+    <><Headers />
+    <div className='bodyTransaction'>
+      <p className='userBalance'>My Current Balance: P{user.currentBalance}</p>
+      <form type="submit" onSubmit={depositBtn} className='depositForm'>
+        <Input type='number' placeholder="Enter Amount" value={depositAmount} onChange={onSetDepositAmount} />
+        <button className='depositBtn'>Deposit</button>
       </form>
 
-      <form type="submit" onSubmit={withdrawBtn} className=''>
-            <Input type='number' placeholder="Enter Amount" value={withdrawAmount} onChange={onSetWithdrawAmount}/>
-            <button>Withdraw</button>
+      <form type="submit" onSubmit={withdrawBtn} className='withdrawForm'>
+        <Input type='number' placeholder="Enter Amount" value={withdrawAmount} onChange={onSetWithdrawAmount} />
+        <button className='withdrawBtn'>Withdraw</button>
       </form>
-      <button onClick={toDash}>Dashboard</button>
-    </div>
+      <div className='sideBarBtn'>
+        <button className="btn" onClick={toDash}>Dashboard</button>
+        <button className="btn" onClick={transferBtn}> Transfer</button>
+        <button className="btn" onClick={transactionbtn}>Transactions</button>
+        <button className="btn" onClick={BudgetTracker}>Budget Tracker</button>
+        <button className="btn" onClick={historyBtn}>Transaction History</button>
+      </div>
+    </div></>
   );
   }
     

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import Dashboard from "./Dashboard";
+import "./Transfer.css"
 import Swal from "sweetalert2";
+import Headers from "./Header";
+import TimeandDate from "./Timer";
 
 const Transfer = (props) => {
   const { user, setCurrentPage, setUser } = props; 
@@ -72,36 +74,59 @@ const Transfer = (props) => {
     }
   }
 
-  const dashboardBtn = () => {
+  const toDash = () => {
     setCurrentPage('dashboard')
-  };
+  }
+
+  const transactionbtn = (() => {
+    setCurrentPage('transaction')
+})
+
+const historyBtn = (() => {
+    setCurrentPage('history')
+})
+
+const goToTransfer = (() => {
+    setCurrentPage('transfer')
+})
+
+const BudgetTracker = (() => {
+    setCurrentPage('budgetTracker')
+    let budgetTrack = JSON.parse(localStorage.getItem("accounts"))
+    console.log(budgetTrack)
+}) 
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }} className='flex justify-center items-center'>
+      <><Headers />
+      <TimeandDate/>
+      <div className="bodyTransfer">
       <form>
-        <div>
-          <h1>Current Balance:{user.currentBalance}</h1>
+        <div className="receiverAccount">
+          <h1 className="userBalance">My Current Balance:{user.currentBalance}</h1>
           <label>Receiver Account:</label>
           <input
             type="text"
             value={receiverUsername}
-            onChange={onSetReceiverUsername}
-          />
-        </div>
-        <div>
+            onChange={onSetReceiverUsername} 
+            />
           <label>Transfer Amount:</label>
           <input
             type="number"
             value={transferAmount}
-            onChange={onSetTransferAmount}
-          />
+            onChange={onSetTransferAmount} />
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <button onClick={transferBtn} style={{ backgroundColor: "white", marginTop: '10px' }}>Transfer</button>
           </div>
         </div>
       </form>
-      <button onClick={dashboardBtn}>Go to Dashboard</button>
-    </div>
+      <div className='sideBarBtn'>
+        <button className="btn" onClick={toDash}>Dashboard</button>
+        <button className="btn" onClick={goToTransfer}> Transfer</button>
+        <button className="btn" onClick={transactionbtn}>Transactions</button>
+        <button className="btn" onClick={BudgetTracker}>Budget Tracker</button>
+        <button className="btn" onClick={historyBtn}>Transaction History</button>
+      </div>
+    </div></>
   );
 };
 
